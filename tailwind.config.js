@@ -28,7 +28,14 @@ module.exports = {
       steel: "#B7B7CE",
       fairy: "#D685AD",
       menu: "#cccaba",
-      typeButton: "#000000"
+      typeButton: "#000000",
+      hp: "#FF0000",
+      attack: "#F08030",
+      "special-attack": "#6890F0",
+      defense: "#F8D030",
+      "special-defense": "#78C850",
+      speed: "#F85888",
+      select: "#A1CEFF"
     }
   },
   plugins: [],
