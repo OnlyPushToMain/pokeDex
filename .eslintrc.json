@@ -1,0 +1,40 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true,
+        "node": true,
+        "jest": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "standard"
+    ],
+    "overrides": [
+        {
+            // 3) Now we enable eslint-plugin-testing-library rules or preset only for matching testing files!
+            "files": ["src/*.test.js", "src/**/*.test.js"],
+            "extends": ["plugin:testing-library/react"]
+        }
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "plugins": [
+        "react",
+        "testing-library"
+    ],
+    "rules": {
+        "quotes":["error", "double"],
+        "indent": ["error", 2],
+        "linebreak-style": ["error", "unix"],
+        "jsx-quotes": ["error", "prefer-double"],
+        "semi": ["error", "never"],
+        "testing-library/await-async-query": ["error"],
+        "testing-library/no-await-sync-query": ["error"],
+        "testing-library/no-debugging-utils": ["warn"],
+        "testing-library/no-dom-import": ["off"],
+        "react/prop-types": ["off"],
+        "react/react-in-jsx-scope": ["off"]
+    }
+}
