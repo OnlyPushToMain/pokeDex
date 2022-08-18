@@ -8,7 +8,7 @@ export default function Home () {
   const [loading, setLoading] = useState(true)
   const [loading2, setLoading2] = useState(false)
   const [showPoke, setShowPoke] = useState([])
-  const url = "https://pokeapi.co/api/v2/pokemon/?limit=151"
+  const url = "https://pokeapi.co/api/v2/pokemon/?limit=898"
 
   const pokeFun = async () => {
     setLoading(true)
