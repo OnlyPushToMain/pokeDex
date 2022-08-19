@@ -10,25 +10,30 @@ function colorObjectGenerator (pokeData) {
   return colorObject
 }
 
-function colorChangeStats (stat) {
-  const color = [
-    "text-hp",
-    "text-attack",
-    "text-special-attack",
-    "text-defense",
-    "text-special-defense",
-    "text-speed"
-  ]
-  let thisColor = ""
-  color.find(element => {
-    if (element.includes(stat)) {
-      thisColor = element
-      return thisColor
+function colorObjectGeneratorStats (pokeData) {
+  const colorObject = {}
+  for (let i = 0; i < pokeData.length; i++) {
+    for (let j = 0; j < pokeData[i].stats.length; j++) {
+      if (!colorObject[`${pokeData[i].stats[j].stat.name}`]) {
+        colorObject[`${pokeData[i].stats[j].stat.name}`] = "text-" + pokeData[i].stats[j].stat.name
+      }
     }
-    return thisColor
-  })
-  return thisColor
+  }
+  return colorObject
+}
+function colorObjectGeneratorGradient (pokeData) {
+  const colorObject = {}
+  // const colorObject2 = {}
+  for (let i = 0; i < pokeData.length; i++) {
+    for (let j = 0; j < pokeData[i].types.length; j++) {
+      if (!colorObject[`${pokeData[i].types[j].type.name}`] && pokeData[i].types.length > 1) {
+        colorObject[`${pokeData[i].types[j].type.name}`] = "from-" + pokeData[i].types[j].type.name
+        colorObject[`${pokeData[i].types[j + 1].type.name}`] = "to-" + pokeData[i].types[j + 1].type.name
+      }
+    }
+    console.log(colorObject)
+  }
+  return colorObject
 }
 
-export { colorObjectGenerator, colorChange, colorChangeBG, colorChangeBG2, colorChangeStats }
-
+export { colorObjectGenerator, colorObjectGeneratorStats, colorObjectGeneratorGradient }

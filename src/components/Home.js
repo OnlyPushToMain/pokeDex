@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { colorObjectGenerator } from "./ColorFunctions"
+import { colorObjectGenerator, colorObjectGeneratorGradient, colorObjectGeneratorStats } from "./ColorFunctions"
 import axios from "axios"
 import Card from "./Card"
 import Index from "./Index"
@@ -9,8 +9,10 @@ export default function Home () {
   const [loading, setLoading] = useState(true)
   const [loading2, setLoading2] = useState(false)
   const [showPoke, setShowPoke] = useState([])
-
+  const url = "https://pokeapi.co/api/v2/pokemon/?limit898"
   const [colors, setColors] = useState({})
+  const [stats, setStats] = useState({})
+  const [gradient, setGradient] = useState({})
   // const colors = {
   //   grass: "bg-grass",
   //   poison: "bg-poison",
@@ -58,6 +60,8 @@ export default function Home () {
   }, [])
   useEffect(() => {
     setColors(colorObjectGenerator(pokeData))
+    setStats(colorObjectGeneratorStats(pokeData))
+    setGradient(colorObjectGeneratorGradient(pokeData))
   }, [pokeData])
 
   return (
@@ -65,11 +69,11 @@ export default function Home () {
       <div className="h-screen flex">
         <div className="ml-10 flex-1 flex overflow-hidden ">
           <div className="flex-1 overflow-y-scroll">
-            <Index pokemon={pokeData} loading={loading} showPoke={showPokemon} colors={colors}/>
+            <Index pokemon={pokeData} loading={loading} showPoke={showPokemon} gradient={gradient} colors={colors}/>
           </div>
         </div>
         <div className=" mr-2 mt-2 sticky top-0 left-0 right-0 overflow-hidden">
-          <Card pokemon={showPoke} loading={loading2} />
+          <Card pokemon={showPoke} loading={loading2} colors={colors} gradient={gradient} stats={stats}/>
         </div>
       </div>
     </>

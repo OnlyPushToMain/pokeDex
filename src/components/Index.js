@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function Index ({ pokemon, loading, showPoke, colors }) {
+export default function Index ({ pokemon, loading, showPoke, colors, gradient }) {
   console.log("pokemon: ", pokemon)
   return (
 
@@ -13,7 +13,7 @@ export default function Index ({ pokemon, loading, showPoke, colors }) {
               onClick={(e => showPoke(value))}
               key={index}
 
-              className={value.types.length > 1 ? `ml-1 mr-1 hover:shadow-lg hover:outline hover:outline-select p-8 rounded-lg w-auto mt-2 capitalize bg-gradient-to-r ${colors[`${value.types[0].type.name}`]} ${colors[`${value.types[1].type.name}`]}` : `${colors[`${value.types[0].type.name}`]} ml-1 mr-1 hover:shadow-lg hover:outline hover:outline-select p-8 rounded-lg  w-auto mt-2 capitalize bg-gradient-to-r`}>
+              className={value.types.length > 1 ? `ml-1 mr-1 hover:shadow-lg hover:outline hover:outline-select p-8 rounded-lg w-auto mt-2 capitalize bg-gradient-to-r ${gradient[`${value.types[0].type.name}`]} ${gradient[`${value.types[1].type.name}`]}` : `${colors[`${value.types[0].type.name}`]} ml-1 mr-1 hover:shadow-lg hover:outline hover:outline-select p-8 rounded-lg  w-auto mt-2 capitalize`}>
 
               <span
                 className="text-xl font-bold mb-2 text-gray-800 flex flex-row items-center justify-start "
@@ -27,8 +27,7 @@ export default function Index ({ pokemon, loading, showPoke, colors }) {
                   return (
                     <div
                       key={index}
-
-                      className={` ${colors[`${value}`]} brightness-125 rounded ml-1 mr-1 shadow-md`}>
+                      className={` ${colors[`${value.type.name}`]} brightness-125 rounded ml-1 mr-1 shadow-md`}>
                       <p className="ml-2 mr-2" > {value.type.name} </p>
 
                     </div>)
