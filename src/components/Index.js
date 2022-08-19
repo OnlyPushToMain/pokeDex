@@ -1,7 +1,7 @@
 import React from "react"
-import { colorChange, colorChangeBG, colorChangeBG2 } from "./ColorFunctions.js"
 
-export default function Index ({ pokemon, loading, showPoke }) {
+export default function Index ({ pokemon, loading, showPoke, colors }) {
+  console.log("pokemon: ", pokemon)
   return (
 
     <div className="grid grid-cols-2 gap-4">
@@ -12,7 +12,9 @@ export default function Index ({ pokemon, loading, showPoke }) {
             <div
               onClick={(e => showPoke(value))}
               key={index}
-              className={value.types.length > 1 ? `ml-1 mr-1 hover:shadow-lg hover:outline hover:outline-select p-8 rounded-lg w-auto mt-2 capitalize bg-gradient-to-r ${colorChangeBG(value.types[0].type.name)} ${colorChangeBG2(value.types[1].type.name)} ` : `${colorChange(value.types[0].type.name)} ml-1 mr-1 hover:shadow-lg hover:outline hover:outline-select p-8 rounded-lg  w-auto mt-2 capitalize bg-gradient-to-r`}>
+
+              className={value.types.length > 1 ? `ml-1 mr-1 hover:shadow-lg hover:outline hover:outline-select p-8 rounded-lg w-auto mt-2 capitalize bg-gradient-to-r ${colors[`${value.types[0].type.name}`]} ${colors[`${value.types[1].type.name}`]}` : `${colors[`${value.types[0].type.name}`]} ml-1 mr-1 hover:shadow-lg hover:outline hover:outline-select p-8 rounded-lg  w-auto mt-2 capitalize bg-gradient-to-r`}>
+
               <span
                 className="text-xl font-bold mb-2 text-gray-800 flex flex-row items-center justify-start "
               >
@@ -25,8 +27,10 @@ export default function Index ({ pokemon, loading, showPoke }) {
                   return (
                     <div
                       key={index}
-                      className={` ${colorChange(value.type.name)} brightness-125 rounded ml-1 mr-1 shadow-md`}>
+
+                      className={` ${colors[`${value}`]} brightness-125 rounded ml-1 mr-1 shadow-md`}>
                       <p className="ml-2 mr-2" > {value.type.name} </p>
+
                     </div>)
                 })}
               </span>
