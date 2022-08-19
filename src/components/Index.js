@@ -1,7 +1,7 @@
 import React from "react"
-import { colorChange, colorChangeBG, colorChangeBG2 } from "./ColorFunctions.js"
 
-export default function Index ({ pokemon, loading, showPoke }) {
+export default function Index ({ pokemon, loading, showPoke, colors }) {
+  console.log("pokemon: ", pokemon)
   return (
 
     <div>
@@ -12,7 +12,8 @@ export default function Index ({ pokemon, loading, showPoke }) {
             <div
               onClick={(e => showPoke(value))}
               key={index}
-              className={value.types.length > 1 ? `bg-gradient-to-r ${colorChangeBG(value.types[0].type.name)} ${colorChangeBG2(value.types[1].type.name)} p-8 rounded-lg shadow-md w-auto mt-6` : `${colorChange(value.types[0].type.name)} p-8 rounded-lg shadow-md w-auto mt-6`}>
+              className={
+                value.types.length > 1 ? `bg-gradient-to-r ${colors[`${value.types[0].type.name}`]} ${colors[`${value.types[1].type.name}`]} p-8 rounded-lg shadow-md w-auto mt-6` : `${colors[`${value.types[0].type.name}`]} p-8 rounded-lg shadow-md w-auto mt-6`}>
               <span
                 className="text-2xl font-bold mb-2 text-gray-800 flex flex-row ml-0 items-center "
               >
@@ -25,7 +26,7 @@ export default function Index ({ pokemon, loading, showPoke }) {
                   return (
                     <div
                       key={index}
-                      className={`ml-5 ${colorChange(value.type.name)} brightness-125 rounded-xl shadow-md`}>
+                      className={`ml-5 ${colors[`${value}`]} brightness-125 rounded-xl shadow-md`}>
                       <p className="ml-1 mr-1" > {value.type.name} </p>
                     </div>)
                 })}
