@@ -9,6 +9,7 @@ export default function Home () {
   const [loading, setLoading] = useState(true)
   const [loading2, setLoading2] = useState(false)
   const [showPoke, setShowPoke] = useState([])
+
   const [colors, setColors] = useState({})
   // const colors = {
   //   grass: "bg-grass",
@@ -29,8 +30,6 @@ export default function Home () {
   //   ghost: "bg-ghost",
   //   dragon: "bg-dragon"
   // }
-
-  const url = "https://pokeapi.co/api/v2/pokemon/?limit=151"
 
   const pokeFun = async () => {
     setLoading(true)

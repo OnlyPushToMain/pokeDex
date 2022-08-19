@@ -4,7 +4,7 @@ export default function Index ({ pokemon, loading, showPoke, colors }) {
   console.log("pokemon: ", pokemon)
   return (
 
-    <div>
+    <div className="grid grid-cols-2 gap-4">
       { loading
         ? <h1>Loading...</h1>
         : pokemon.map((value, index) => {
@@ -12,22 +12,25 @@ export default function Index ({ pokemon, loading, showPoke, colors }) {
             <div
               onClick={(e => showPoke(value))}
               key={index}
-              className={
-                value.types.length > 1 ? `bg-gradient-to-r ${colors[`${value.types[0].type.name}`]} ${colors[`${value.types[1].type.name}`]} p-8 rounded-lg shadow-md w-auto mt-6` : `${colors[`${value.types[0].type.name}`]} p-8 rounded-lg shadow-md w-auto mt-6`}>
+
+              className={value.types.length > 1 ? `ml-1 mr-1 hover:shadow-lg hover:outline hover:outline-select p-8 rounded-lg w-auto mt-2 capitalize bg-gradient-to-r ${colors[`${value.types[0].type.name}`]} ${colors[`${value.types[1].type.name}`]}` : `${colors[`${value.types[0].type.name}`]} ml-1 mr-1 hover:shadow-lg hover:outline hover:outline-select p-8 rounded-lg  w-auto mt-2 capitalize bg-gradient-to-r`}>
+
               <span
-                className="text-2xl font-bold mb-2 text-gray-800 flex flex-row ml-0 items-center "
+                className="text-xl font-bold mb-2 text-gray-800 flex flex-row items-center justify-start "
               >
-                <p className="mr-10">{value.id}</p>
+                <p className="mr-1">{value.id}</p>
                 <img
                   className="max-w-[50px] max-h-[50px] min-w-[50px] min-h-[50px]"
-                  src={value.sprites.versions["generation-v"]["black-white"].animated.front_default} alt={value.species.name}/>
-                <p className="ml-5">{value.species.name.toUpperCase()}</p>
+                  src={value.sprites.versions["generation-v"]["black-white"].animated.front_default ? value.sprites.versions["generation-v"]["black-white"].animated.front_default : value.sprites.front_default } alt={value.species.name}/>
+                <p className="ml-1 capitalize">{value.species.name}</p>
                 {value.types.map((value, index) => {
                   return (
                     <div
                       key={index}
-                      className={`ml-5 ${colors[`${value}`]} brightness-125 rounded-xl shadow-md`}>
-                      <p className="ml-1 mr-1" > {value.type.name} </p>
+
+                      className={` ${colors[`${value}`]} brightness-125 rounded ml-1 mr-1 shadow-md`}>
+                      <p className="ml-2 mr-2" > {value.type.name} </p>
+
                     </div>)
                 })}
               </span>

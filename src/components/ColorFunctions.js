@@ -10,14 +10,25 @@ function colorObjectGenerator (pokeData) {
   return colorObject
 }
 
-function colorChange (type) {
-  return "bg-" + type
-}
-function colorChangeBG (type) {
-  return "from-" + type
-}
-function colorChangeBG2 (type) {
-  return "to-" + type
+function colorChangeStats (stat) {
+  const color = [
+    "text-hp",
+    "text-attack",
+    "text-special-attack",
+    "text-defense",
+    "text-special-defense",
+    "text-speed"
+  ]
+  let thisColor = ""
+  color.find(element => {
+    if (element.includes(stat)) {
+      thisColor = element
+      return thisColor
+    }
+    return thisColor
+  })
+  return thisColor
 }
 
-export { colorObjectGenerator, colorChange, colorChangeBG, colorChangeBG2 }
+export { colorObjectGenerator, colorChange, colorChangeBG, colorChangeBG2, colorChangeStats }
+
