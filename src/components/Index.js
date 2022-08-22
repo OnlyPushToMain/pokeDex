@@ -1,6 +1,8 @@
 import React from "react"
+
 export default function Index ({ pokemon, loading, showPoke, colors, colorsBG, colorsBG2, query, changeQuery }) {
   console.log("pokemon: ", pokemon)
+
   return (
 
     <div className="grid grid-cols-2 gap-4">
@@ -31,15 +33,8 @@ export default function Index ({ pokemon, loading, showPoke, colors, colorsBG, c
 
       { loading
         ? <h1>Loading...</h1>
-        : pokemon.filter(value => {
-          if (query === "") {
-            return value
-          } else if (value.name.includes(query)) {
-            console.log("this is the filtered value:", value)
-            console.log("this is the query:", query)
-            return value
-          }
-        }).map((pokemon, index) => {
+        : pokemon.filter(value => value.name.includes(query)
+        ).map((pokemon, index) => {
           return (
             <div
               onClick={(e => showPoke(pokemon))}
