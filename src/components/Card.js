@@ -1,10 +1,10 @@
 import React from "react"
-import { colorChangeStats, colorChangeBG, colorChangeBG2 } from "./ColorFunctions"
-export default function Card ({ pokemon, loading, colors, gradient, stats }) {
+import { colorChangeStats } from "./ColorFunctions"
+export default function Card ({ pokemon, loading, colors, colorsBG, colorsBG2 }) {
   return (
     <div className="wrapper">
       {loading && <div>
-        <img className={pokemon[0].types.length === 2 ? `bg-gradient-to-r ${colorChangeBG(pokemon[0].types[0].type.name)} ${colorChangeBG2(pokemon[0].types[1].type.name)} w-full object-cover object-center rounded shadow-md` : `${colors[`${pokemon[0].types[0].type.name}`]} w-full object-cover object-center rounded shadow-md`} src={pokemon[0].sprites.other["official-artwork"].front_default} alt=""/>
+        <img className={pokemon[0].types.length === 2 ? `bg-gradient-to-r  ${colorsBG[`${pokemon[0].types[0].type.name}`]} ${colorsBG2[`${pokemon[0].types[1].type.name}`]} w-full object-cover object-center rounded shadow-md` : `${colors[`${pokemon[0].types[0].type.name}`]} w-full object-cover object-center rounded shadow-md`} src={pokemon[0].sprites.other["official-artwork"].front_default} alt=""/>
         <div>
 
           <div className="relative px-4 -mt-20  ">

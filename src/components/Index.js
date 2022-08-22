@@ -1,29 +1,61 @@
 import React from "react"
-import { colorChangeBG, colorChangeBG2 } from "./ColorFunctions"
-export default function Index ({ pokemon, loading, showPoke, colors }) {
+export default function Index ({ pokemon, loading, showPoke, colors, colorsBG, colorsBG2, query, changeQuery }) {
   console.log("pokemon: ", pokemon)
   return (
 
     <div className="grid grid-cols-2 gap-4">
+      <div className="sticky top-0 ml-4 mr-4">
+        <form className="flex flex-row items-center justify-evenly">
+          <input onChange={event => changeQuery(event.target.value)} type="text" className="w-full border-4 " placeholder="Search">
+          </input>
+          <select className="ml-1 mr-1">
+            <option value="Pokedex Number">PokeDex Number
+            </option>
+            <option value="Name">Name
+            </option>
+            <option value="Hp">Hp
+            </option>
+            <option value="Attack">Attack
+            </option>
+            <option value="Special-Attack">Special-Attack
+            </option>
+            <option value="Defense">Defense
+            </option>
+            <option value="Special-Defense">Special-Defense
+            </option>
+            <option value="Speed">Speed
+            </option>
+          </select>
+        </form>
+      </div>
+
       { loading
         ? <h1>Loading...</h1>
-        : pokemon.map((value, index) => {
+        : pokemon.filter(value => {
+          if (query === "") {
+            return value
+          } else if (value.name.includes(query)) {
+            console.log("this is the filtered value:", value)
+            console.log("this is the query:", query)
+            return value
+          }
+        }).map((pokemon, index) => {
           return (
             <div
-              onClick={(e => showPoke(value))}
+              onClick={(e => showPoke(pokemon))}
               key={index}
 
-              className={value.types.length > 1 ? `bg-gradient-to-r ml-1 mr-1 hover:shadow-lg hover:outline hover:outline-select p-8 rounded-lg w-auto mt-2 capitalize ${colorChangeBG(value.types[0].type.name)} ${colorChangeBG2(value.types[1].type.name)}` : `${colors[`${value.types[0].type.name}`]} ml-1 mr-1 hover:shadow-lg hover:outline hover:outline-select p-8 rounded-lg  w-auto mt-2 capitalize`}>
+              className={pokemon.types.length > 1 ? `select-none bg-gradient-to-r ml-1 mr-1 hover:shadow-lg hover:outline hover:outline-select p-8 rounded-lg w-auto mt-2 capitalize ${colorsBG[`${pokemon.types[0].type.name}`]} ${colorsBG2[`${pokemon.types[1].type.name}`]}` : ` select-none ml-1 mr-1 hover:shadow-lg hover:outline hover:outline-select p-8 rounded-lg  w-auto mt-2 capitalize ${colors[`${pokemon.types[0].type.name}`]}`}>
 
               <span
                 className="text-xl font-bold mb-2 text-gray-800 flex flex-row items-center justify-start "
               >
-                <p className="mr-1">{value.id}</p>
+                <p className="mr-1">{pokemon.id}</p>
                 <img
                   className="max-w-[50px] max-h-[50px] min-w-[50px] min-h-[50px]"
-                  src={value.sprites.versions["generation-v"]["black-white"].animated.front_default ? value.sprites.versions["generation-v"]["black-white"].animated.front_default : value.sprites.front_default } alt={value.species.name}/>
-                <p className="ml-1 capitalize">{value.species.name}</p>
-                {value.types.map((value, index) => {
+                  src={pokemon.sprites.versions["generation-v"]["black-white"].animated.front_default ? pokemon.sprites.versions["generation-v"]["black-white"].animated.front_default : pokemon.sprites.front_default } alt={pokemon.species.name}/>
+                <p className="ml-1 capitalize">{pokemon.species.name}</p>
+                {pokemon.types.map((value, index) => {
                   return (
                     <div
                       key={index}
