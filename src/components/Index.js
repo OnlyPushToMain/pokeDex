@@ -4,24 +4,14 @@ export default function Index ({ filterParam, setFilterParam, pokemon, loading, 
   console.log("pokemon: ", pokemon)
   return (
     <>
-      <div className="sticky top-0 ml-4 mr-4">
+      <div className="sticky top-0 bg-[white] z-[2]">
         <form onSubmit={e => { e.preventDefault() }} className="flex flex-row items-center justify-evenly">
-          <input onChange={event => changeQuery(event.target.value)} type="text" className="w-full border-4 " placeholder="Search">
+          <input onChange={event => changeQuery(event.target.value)} type="text" className="w-full border-2 border-solid border-[grey] p-[5px] m-[2px] rounded-[25px]" placeholder="Search">
           </input>
           <select onChange={event => setFilterParam(event.target.value) } className="ml-1 mr-1">
             <option value="">None
             </option>
             <option value="type">Type
-            </option>
-            <option value="Attack">Attack
-            </option>
-            <option value="Special-Attack">Special-Attack
-            </option>
-            <option value="Defense">Defense
-            </option>
-            <option value="Special-Defense">Special-Defense
-            </option>
-            <option value="Speed">Speed
             </option>
           </select>
         </form>
@@ -29,7 +19,7 @@ export default function Index ({ filterParam, setFilterParam, pokemon, loading, 
       <div className="grid grid-cols-2 gap-4">
         { loading
           ? <h1>Loading...</h1>
-          : pokemon.filter(value => filterParam ? value.types.length > 1 ? value.types[0].type.name.includes(query) || value.types[1].type.name.includes(query) : value.types[0].type.name.includes(query) : value.name.includes(query)
+          : pokemon.filter(value => filterParam ? value.types.length > 1 ? value.types[0].type.name.includes(query.toLowerCase()) || value.types[1].type.name.includes(query.toLowerCase()) : value.types[0].type.name.includes(query.toLowerCase()) : value.name.includes(query.toLowerCase())
           ).map((pokemon, index) => {
             return (
               <div
