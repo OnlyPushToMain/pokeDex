@@ -1,21 +1,9 @@
 import React from "react"
 
-export default function Index ({ filterParam, setFilterParam, pokemon, loading, showPoke, colors, colorsBG, colorsBG2, query, changeQuery }) {
+export default function Index ({ filterParam, pokemon, loading, showPoke, colors, colorsBG, colorsBG2, query }) {
   console.log("pokemon: ", pokemon)
   return (
     <>
-      <div className="sticky top-0 bg-[white] z-[2]">
-        <form onSubmit={e => { e.preventDefault() }} className="flex flex-row items-center justify-evenly">
-          <input onChange={event => changeQuery(event.target.value)} type="text" className="w-full border-2 border-solid border-[grey] p-[5px] m-[2px] rounded-[25px]" placeholder="Search">
-          </input>
-          <select onChange={event => setFilterParam(event.target.value) } className="ml-1 mr-1">
-            <option value="">None
-            </option>
-            <option value="type">Type
-            </option>
-          </select>
-        </form>
-      </div>
       <div className="grid grid-cols-2 gap-4">
         { loading
           ? <h1>Loading...</h1>
