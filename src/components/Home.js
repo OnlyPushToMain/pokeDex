@@ -3,6 +3,7 @@ import { colorObjectGenerator, colorChangeBG, colorChangeBG2 } from "./ColorFunc
 import axios from "axios"
 import Card from "./Card"
 import Index from "./Index"
+import SearchBar from "./SearchBar"
 
 export default function Home () {
   const [pokeData, setPokeData] = useState([])
@@ -55,6 +56,7 @@ export default function Home () {
   console.log("this is the filterParam:", filterParam)
   return (
     <>
+      <SearchBar changeQuery={setQuery} query={query} filterParam={filterParam} setFilterParam={setFilterParam}/>
       <div className="h-screen flex">
         <div className="ml-[.5rem] flex-1 flex overflow-hidden ">
           <div className="flex-1 overflow-y-scroll">

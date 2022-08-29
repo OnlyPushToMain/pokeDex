@@ -7,7 +7,7 @@ export default function Card ({ pokemon, loading, colors, colorsBG, colorsBG2 })
         <img className={pokemon[0].types.length === 2 ? `bg-gradient-to-r  ${colorsBG[`${pokemon[0].types[0].type.name}`]} ${colorsBG2[`${pokemon[0].types[1].type.name}`]} w-full object-cover object-center rounded shadow-md` : `${colors[`${pokemon[0].types[0].type.name}`]} w-full object-cover object-center rounded shadow-md`} src={pokemon[0].sprites.other["official-artwork"].front_default} alt=""/>
         <div>
 
-          <div className="relative px-4 -mt-20  ">
+          <div className="relative mt-[1rem]  ">
             <div className="bg-white p-6 rounded-lg shadow-lg bg-menu flex flex-col items-center mb-5">
               <div className="flex flex-col items-center">
                 <div>
