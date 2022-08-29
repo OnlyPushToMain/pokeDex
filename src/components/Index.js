@@ -1,20 +1,17 @@
 import React from "react"
 
-export default function Index ({ pokemon, loading, showPoke, colors, colorsBG, colorsBG2, query, changeQuery }) {
+export default function Index ({ filterParam, setFilterParam, pokemon, loading, showPoke, colors, colorsBG, colorsBG2, query, changeQuery }) {
   console.log("pokemon: ", pokemon)
-
   return (
     <>
       <div className="sticky top-0 ml-4 mr-4">
-        <form className="flex flex-row items-center justify-evenly">
+        <form onSubmit={e => { e.preventDefault() }} className="flex flex-row items-center justify-evenly">
           <input onChange={event => changeQuery(event.target.value)} type="text" className="w-full border-4 " placeholder="Search">
           </input>
-          <select className="ml-1 mr-1">
-            <option value="Pokedex Number">PokeDex Number
+          <select onChange={event => setFilterParam(event.target.value) } className="ml-1 mr-1">
+            <option value="">None
             </option>
-            <option value="Name">Name
-            </option>
-            <option value="Hp">Hp
+            <option value="type">Type
             </option>
             <option value="Attack">Attack
             </option>
@@ -32,7 +29,7 @@ export default function Index ({ pokemon, loading, showPoke, colors, colorsBG, c
       <div className="grid grid-cols-2 gap-4">
         { loading
           ? <h1>Loading...</h1>
-          : pokemon.filter(value => value.name.includes(query)
+          : pokemon.filter(value => filterParam ? value.types.length > 1 ? value.types[0].type.name.includes(query) || value.types[1].type.name.includes(query) : value.types[0].type.name.includes(query) : value.name.includes(query)
           ).map((pokemon, index) => {
             return (
               <div

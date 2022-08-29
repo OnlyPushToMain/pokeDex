@@ -14,6 +14,7 @@ export default function Home () {
   const [colorsBG, setColorsBG] = useState({})
   const [colorsBG2, setColorsBG2] = useState({})
   const [query, setQuery] = useState("")
+  const [filterParam, setFilterParam] = useState(null)
 
   const pokeFun = async () => {
     setLoading(true)
@@ -45,13 +46,13 @@ export default function Home () {
     setColorsBG(colorChangeBG(pokeData))
     setColorsBG2(colorChangeBG2(pokeData))
   }, [pokeData])
-
+  console.log("this is the filterParam:", filterParam)
   return (
     <>
       <div className="h-screen flex">
         <div className="ml-10 flex-1 flex overflow-hidden ">
           <div className="flex-1 overflow-y-scroll">
-            <Index query={query} changeQuery={setQuery} pokemon={pokeData} loading={loading} showPoke={showPokemon} colors={colors} colorsBG={colorsBG} colorsBG2={colorsBG2}/>
+            <Index query={query} filterParam={filterParam} setFilterParam={setFilterParam} changeQuery={setQuery} pokemon={pokeData} loading={loading} showPoke={showPokemon} colors={colors} colorsBG={colorsBG} colorsBG2={colorsBG2}/>
           </div>
         </div>
         <div className=" mr-2 mt-2 sticky top-0 left-0 right-0 overflow-hidden">
