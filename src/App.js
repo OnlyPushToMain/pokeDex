@@ -18,6 +18,7 @@ export default function App () {
   const [colorsBG2, setColorsBG2] = useState(() => {})
   const [query, setQuery] = useState(() => "")
   const [filterParam, setFilterParam] = useState(() => null)
+  const [randomPoke, setRandomPoke] = useState()
 
   const pokeFun = async () => {
     setLoading(prevState => true)
@@ -47,6 +48,13 @@ export default function App () {
       console.log("loading:", loading)
     }
   }
+  const randomPokemon = () => {
+    if (pokeData) {
+      const randomNum = Math.floor(Math.random() * pokeData.length)
+      console.log("random number:", randomNum)
+      setRandomPoke(randomNum)
+    }
+  }
   useEffect(() => {
     pokeFun()
   }, [url])
@@ -54,6 +62,7 @@ export default function App () {
     setColors(colorObjectGenerator(pokeData))
     setColorsBG(colorChangeBG(pokeData))
     setColorsBG2(colorChangeBG2(pokeData))
+    randomPokemon()
   }, [pokeData])
   console.log("this is the filterParam:", filterParam)
   return (
@@ -61,7 +70,7 @@ export default function App () {
       <Header/>
       <Routes>
         <Route path="/" element={<Home setQuery={ setQuery } query={ query } filterParam={ filterParam } setFilterParam={ setFilterParam } pokeData={ pokeData } loading={ loading } showPokemon={ showPokemon } colors={ colors } colorsBG={ colorsBG } colorsBG2={ colorsBG2 } showPoke={ showPoke } loading2={ loading2 }/>}/>
-        <Route path="/wtp" element={<WtpGame/>}/>
+        <Route path="/wtp" element={<WtpGame randomPokemon={randomPokemon} pokeData={ pokeData } randomPoke={randomPoke} />}/>
       </Routes>
     </>
   )
