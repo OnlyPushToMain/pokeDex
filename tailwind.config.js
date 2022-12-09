@@ -6,17 +6,17 @@ module.exports = {
   ],
   theme: {
     screens: {
-      'xsm': '860px',
-      'sm': '1249px',
+      xsm: "860px",
+      sm: "1249px",
       // => @media (min-width: 640px) { ... }
 
-      'md': '1250px',
+      md: "1250px",
       // => @media (min-width: 768px) { ... }
 
-      'lg': '1500px',
+      lg: "1500px",
       // => @media (min-width: 1024px) { ... }
 
-      'xl': '1800px',
+      xl: "1800px"
       // => @media (min-width: 1280px) { ... }
     },
     extend: {
