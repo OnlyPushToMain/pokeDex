@@ -5,7 +5,31 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}"
   ],
   theme: {
-    extend: {},
+    screens: {
+      xsm: "860px",
+      sm: "1249px",
+      // => @media (min-width: 640px) { ... }
+
+      md: "1250px",
+      // => @media (min-width: 768px) { ... }
+
+      lg: "1500px",
+      // => @media (min-width: 1024px) { ... }
+
+      xl: "1800px"
+      // => @media (min-width: 1280px) { ... }
+    },
+    extend: {
+      keyframes: {
+        contAnim: {
+          "0%": { contrast: "0%" },
+          "100%": { contrast: "100%" }
+        }
+      },
+      animation: {
+        contrastAnim: "contAnim 2s linear"
+      }
+    },
     colors: {
       transparent: "transparent",
       current: "currentColor",

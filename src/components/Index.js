@@ -4,7 +4,7 @@ export default function Index ({ filterParam, pokemon, loading, showPoke, colors
   console.log("pokemon: ", pokemon)
   return (
     <>
-      <div className="grid grid-cols-2 gap-4">
+      <div className=" grid md:grid-cols-2 gap-4 sm:grid-cols-1 gap 4">
         { loading
           ? <h1>Loading...</h1>
           : pokemon.filter(value => filterParam ? value.types.length > 1 ? value.types[0].type.name.includes(query.toLowerCase()) || value.types[1].type.name.includes(query.toLowerCase()) : value.types[0].type.name.includes(query.toLowerCase()) : value.name.includes(query.toLowerCase())
@@ -17,7 +17,7 @@ export default function Index ({ filterParam, pokemon, loading, showPoke, colors
                 className={pokemon.types.length > 1 ? `select-none bg-gradient-to-r ml-1 mr-1 hover:shadow-lg hover:outline hover:outline-select p-8 rounded-lg w-auto mt-2 capitalize ${colorsBG[`${pokemon.types[0].type.name}`]} ${colorsBG2[`${pokemon.types[1].type.name}`]}` : ` select-none ml-1 mr-1 hover:shadow-lg hover:outline hover:outline-select p-8 rounded-lg  w-auto mt-2 capitalize ${colors[`${pokemon.types[0].type.name}`]}`}>
 
                 <span
-                  className="text-xl font-bold mb-2 text-gray-800 flex flex-row items-center justify-start "
+                  className="text-xl font-bold mb-2 text-gray-800 items-center justify-start flex flex-col xsm:flex-row"
                 >
                   <p className="mr-1">{pokemon.id}</p>
                   <img
