@@ -5,7 +5,7 @@ export default function Card ({ pokemon2, loading2, colors, colorsBG, colorsBG2 
     <>
       { loading2
         ? <div className="flex flex-row xsm:flex-col">
-          <img className={pokemon2[0].types.length === 2 ? `bg-gradient-to-r  ${colorsBG[`${pokemon2[0].types[0].type.name}`]} ${colorsBG2[`${pokemon2[0].types[1].type.name}`]} w-full object-cover object-center rounded shadow-md h-[250px] xsm:h-[auto]` : `${colors[`${pokemon2[0].types[0].type.name}`]} w-full object-cover object-center rounded shadow-md h-[250px] xsm:h-[auto]`} src={pokemon2[0].sprites.other["official-artwork"].front_default} alt=""/>
+          <img className={pokemon2[0].types.length === 2 ? `bg-gradient-to-r  ${colorsBG[`${pokemon2[0].types[0].type.name}`]} ${colorsBG2[`${pokemon2[0].types[1].type.name}`]} w-full object-cover object-center rounded shadow-md h-[250px] xsm:h-[400px]` : `${colors[`${pokemon2[0].types[0].type.name}`]} w-full object-cover object-center rounded shadow-md h-[250px] xsm:h-[400px]`} src={pokemon2[0].sprites.other["official-artwork"].front_default} alt=""/>
           <div>
 
             <div className="relative xsm:mt-[-2rem]  text-sm xsm:text-base">
