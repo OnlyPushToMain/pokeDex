@@ -50,14 +50,12 @@ export default function WtpGame ({ randomPoke, pokeData, randomPokemon }) {
     <div className="flex flex-col justify-center content-center items-center mt-[10%]">
       { randomPoke &&
       <>
-        <img className="contrast-0 h-[20%] w-[20%]" src={pokeData[randomPoke].sprites.other["official-artwork"].front_default} alt=""></img>
-        {/* <input type="text" className="p-[10px] w-1/2 border-2 border-solid border-[grey] m-[10px] rounded-[25px]" placeholder="Who's that Pokemon?">
-        </input> */}
+        <img className="contrast-0 h-[20%] w-[20%]" draggable="false" id="noSelect" src={pokeData[randomPoke].sprites.other["official-artwork"].front_default} alt=""></img>
         <div className="grid grid-cols-2 gap-10 ">
-          <button className="rounded-[25px] p-[10px] border-2 border-solid border-[grey]" onClick={() => click(pokeData[shuffled[0]].species.name)}> {pokeData[shuffled[0]].species.name.charAt(0).toUpperCase() + pokeData[shuffled[0]].species.name.slice(1)}</button>
-          <button className="rounded-[25px] p-[10px] border-2 border-solid border-[grey]" onClick={() => click(pokeData[shuffled[1]].species.name)}> {pokeData[shuffled[1]].species.name.charAt(0).toUpperCase() + pokeData[shuffled[1]].species.name.slice(1)}</button>
-          <button className="rounded-[25px] p-[10px] border-2 border-solid border-[grey]" onClick={() => click(pokeData[shuffled[2]].species.name)}> {pokeData[shuffled[2]].species.name.charAt(0).toUpperCase() + pokeData[shuffled[2]].species.name.slice(1)}</button>
-          <button className="rounded-[25px] p-[10px] border-2 border-solid border-[grey]" onClick={() => click(pokeData[shuffled[3]].species.name)}> {pokeData[shuffled[3]].species.name.charAt(0).toUpperCase() + pokeData[shuffled[3]].species.name.slice(1)}</button>
+          <button className="rounded-[25px] p-[10px] border-2 border-solid border-[grey] hover:bg-[red] ease-in-out duration-300 hover:text-[white]" onClick={() => click(pokeData[shuffled[0]].species.name)}> {pokeData[shuffled[0]].species.name.charAt(0).toUpperCase() + pokeData[shuffled[0]].species.name.slice(1)}</button>
+          <button className="rounded-[25px] p-[10px] border-2 border-solid border-[grey] hover:bg-[red] ease-in-out duration-300 hover:text-[white]" onClick={() => click(pokeData[shuffled[1]].species.name)}> {pokeData[shuffled[1]].species.name.charAt(0).toUpperCase() + pokeData[shuffled[1]].species.name.slice(1)}</button>
+          <button className="rounded-[25px] p-[10px] border-2 border-solid border-[grey] hover:bg-[red] ease-in-out duration-300 hover:text-[white]" onClick={() => click(pokeData[shuffled[2]].species.name)}> {pokeData[shuffled[2]].species.name.charAt(0).toUpperCase() + pokeData[shuffled[2]].species.name.slice(1)}</button>
+          <button className="rounded-[25px] p-[10px] border-2 border-solid border-[grey] ease-in-out duration-300 hover:bg-[red] hover:text-[white]" onClick={() => click(pokeData[shuffled[3]].species.name)}> {pokeData[shuffled[3]].species.name.charAt(0).toUpperCase() + pokeData[shuffled[3]].species.name.slice(1)}</button>
         </div>
       </>
       }
