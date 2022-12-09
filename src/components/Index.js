@@ -17,7 +17,7 @@ export default function Index ({ filterParam, pokemon, loading, showPoke, colors
                 className={pokemon.types.length > 1 ? `select-none bg-gradient-to-r ml-1 mr-1 hover:shadow-lg hover:outline hover:outline-select p-8 rounded-lg w-auto mt-2 capitalize ${colorsBG[`${pokemon.types[0].type.name}`]} ${colorsBG2[`${pokemon.types[1].type.name}`]}` : ` select-none ml-1 mr-1 hover:shadow-lg hover:outline hover:outline-select p-8 rounded-lg  w-auto mt-2 capitalize ${colors[`${pokemon.types[0].type.name}`]}`}>
 
                 <span
-                  className="text-xl font-bold xsm:mb-2 text-gray-800 items-center justify-start flex flex-col xsm:flex-row"
+                  className="text-xl font-bold mb-2 text-gray-800 items-center justify-start flex flex-col xsm:flex-row"
                 >
                   <p className="mr-1">{pokemon.id}</p>
                   <img
