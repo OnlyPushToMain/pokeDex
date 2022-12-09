@@ -1,7 +1,29 @@
 body{
   overflow: hidden;
+  width: -webkit-fill-available;
 }
 .wrapper{
   display:grid;
   place-items:center
+}
+
+#contrastTarg{
+  animation-name: contrastAnimation;
+  animation-duration: 2s;
+  transition: all ease-in;
+  animation-delay: .5s;
+  animation-fill-mode: forwards;
+  /* animation-iteration-count: infinite; */
+}
+
+@keyframes contrastAnimation {
+  0%   {
+
+      filter: contrast(0);
+      -webkit-filter: contrast(0);
+  }
+  100% {
+      filter: contrast(1);
+      -webkit-filter: contrast(1);
+  }
 }
