@@ -9,7 +9,7 @@ export default function Header () {
         <Link to="/">
           <img className="w-10 invert m-[10px]" src={pokeballIcon}/>
         </Link>
-        <Link to="/">
+        <Link to="/index">
           <h1 className="text-[white] ml-[10px] mr-[10px]">PokéDex</h1>
         </Link>
         <Link to="/wtp">

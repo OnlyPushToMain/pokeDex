@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom"
 import WtpGame from "./components/WtpGame"
 import { colorObjectGenerator, colorChangeBG, colorChangeBG2 } from "./components/ColorFunctions"
 import axios from "axios"
+import HomePage from "./components/HomePage"
 
 export default function App () {
   const [pokeData, setPokeData] = useState(() => [])
@@ -69,7 +70,8 @@ export default function App () {
     <>
       <Header/>
       <Routes>
-        <Route path="/" element={<Home setQuery={ setQuery } query={ query } filterParam={ filterParam } setFilterParam={ setFilterParam } pokeData={ pokeData } loading={ loading } showPokemon={ showPokemon } colors={ colors } colorsBG={ colorsBG } colorsBG2={ colorsBG2 } showPoke={ showPoke } loading2={ loading2 }/>}/>
+        <Route path="/" element={<HomePage setQuery={ setQuery } query={ query } filterParam={ filterParam } setFilterParam={ setFilterParam } pokeData={ pokeData } loading={ loading } showPokemon={ showPokemon } colors={ colors } colorsBG={ colorsBG } colorsBG2={ colorsBG2 } showPoke={ showPoke } loading2={ loading2 }/>}/>
+        <Route path="/index" element={<Home setQuery={ setQuery } query={ query } filterParam={ filterParam } setFilterParam={ setFilterParam } pokeData={ pokeData } loading={ loading } showPokemon={ showPokemon } colors={ colors } colorsBG={ colorsBG } colorsBG2={ colorsBG2 } showPoke={ showPoke } loading2={ loading2 }/>}/>
         <Route path="/wtp" element={<WtpGame randomPokemon={randomPokemon} pokeData={ pokeData } randomPoke={randomPoke} />}/>
       </Routes>
     </>
