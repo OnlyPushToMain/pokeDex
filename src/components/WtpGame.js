@@ -1,8 +1,7 @@
 import React, { useState } from "react"
 
-export default function WtpGame ({ randomPoke, pokeData, randomPokemon }) {
+export default function WtpGame ({ randomPoke, pokeData, randomPokemon, counter, setCounter, highScore, setHighScore }) {
   const randomArr = [`${Math.floor(Math.random() * pokeData.length)}`, `${Math.floor(Math.random() * pokeData.length)}`, `${Math.floor(Math.random() * pokeData.length)}`, `${randomPoke}`]
-
   const [showModal, setShowModal] = useState(false)
   const [displayAns, setDisplayAns] = useState()
 
@@ -26,9 +25,14 @@ export default function WtpGame ({ randomPoke, pokeData, randomPokemon }) {
   function answer (data) {
     if (data.toLowerCase() === pokeData[randomPoke].species.name.toLowerCase()) {
       setDisplayAns(`${pokeData[randomPoke].species.name.charAt(0).toUpperCase() + pokeData[randomPoke].species.name.slice(1)} is that Pokemon!`)
+      setCounter(currentState => currentState + 1)
       return true
     } else {
       setDisplayAns(`Sorry, ${data.charAt(0).toUpperCase() + data.slice(1)} is not correct. It was ${pokeData[randomPoke].species.name.charAt(0).toUpperCase() + pokeData[randomPoke].species.name.slice(1)}!`)
+      if (counter > highScore) {
+        setHighScore(counter)
+      }
+      setCounter(currentState => currentState - currentState)
       return true
     }
   }
@@ -50,6 +54,7 @@ export default function WtpGame ({ randomPoke, pokeData, randomPokemon }) {
     <div className="flex flex-col justify-center content-center items-center mt-[10%]">
       { randomPoke &&
       <>
+        <div>Score: {counter} High Score: {highScore}</div>
         <img className="contrast-0 h-[20%] w-[20%]" draggable="false" id="noSelect" src={pokeData[randomPoke].sprites.other["official-artwork"].front_default} alt=""></img>
         <div className="grid grid-cols-2 gap-10 ">
           <button className="rounded-[25px] p-[10px] border-2 border-solid border-[grey] hover:bg-[red] ease-in-out duration-300 hover:text-[white]" onClick={() => click(pokeData[shuffled[0]].species.name)}> {pokeData[shuffled[0]].species.name.charAt(0).toUpperCase() + pokeData[shuffled[0]].species.name.slice(1)}</button>
