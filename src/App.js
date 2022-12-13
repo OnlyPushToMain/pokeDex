@@ -20,6 +20,8 @@ export default function App () {
   const [query, setQuery] = useState(() => "")
   const [filterParam, setFilterParam] = useState(() => null)
   const [randomPoke, setRandomPoke] = useState()
+  const [counter, setCounter] = useState(0)
+  const [highScore, setHighScore] = useState(0)
 
   const pokeFun = async () => {
     setLoading(prevState => true)
@@ -72,7 +74,7 @@ export default function App () {
       <Routes>
         <Route path="/" element={<HomePage setQuery={ setQuery } query={ query } filterParam={ filterParam } setFilterParam={ setFilterParam } pokeData={ pokeData } loading={ loading } showPokemon={ showPokemon } colors={ colors } colorsBG={ colorsBG } colorsBG2={ colorsBG2 } showPoke={ showPoke } loading2={ loading2 }/>}/>
         <Route path="/index" element={<Home setQuery={ setQuery } query={ query } filterParam={ filterParam } setFilterParam={ setFilterParam } pokeData={ pokeData } loading={ loading } showPokemon={ showPokemon } colors={ colors } colorsBG={ colorsBG } colorsBG2={ colorsBG2 } showPoke={ showPoke } loading2={ loading2 }/>}/>
-        <Route path="/wtp" element={<WtpGame randomPokemon={randomPokemon} pokeData={ pokeData } randomPoke={randomPoke} />}/>
+        <Route path="/wtp" element={<WtpGame randomPokemon={randomPokemon} counter={counter} setCounter={setCounter} highScore={highScore} setHighScore={setHighScore} pokeData={ pokeData } randomPoke={randomPoke} />}/>
       </Routes>
     </>
   )
