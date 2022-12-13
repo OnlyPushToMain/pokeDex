@@ -1,7 +1,7 @@
 import React from "react"
 
 export default function Index ({ filterParam, pokemon, loading, showPoke, colors, colorsBG, colorsBG2, query }) {
-  console.log("pokemon: ", pokemon)
+  // console.log("pokemon: ", pokemon)
   return (
     <>
       <div className=" grid md:grid-cols-2 gap-4 sm:grid-cols-1 gap 4">
