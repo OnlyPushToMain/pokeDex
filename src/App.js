@@ -38,23 +38,23 @@ export default function App () {
         return state
       })
     })
-    console.log("data:", pokeData)
+    // console.log("data:", pokeData)
   }
   const showPokemon = (value) => {
     setShowPoke(prevState => [value])
-    console.log("value", value)
+    // console.log("value", value)
     if (loading2 === true && value === showPoke[0]) {
       setLoading2(false)
-      console.log("loading:", loading)
+      // console.log("loading:", loading)
     } else {
       setLoading2(true)
-      console.log("loading:", loading)
+      // console.log("loading:", loading)
     }
   }
   const randomPokemon = () => {
     if (pokeData) {
       const randomNum = Math.floor(Math.random() * pokeData.length)
-      console.log("random number:", randomNum)
+      // console.log("random number:", randomNum)
       setRandomPoke(randomNum)
     }
   }
